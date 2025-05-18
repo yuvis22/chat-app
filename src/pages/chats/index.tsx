@@ -32,7 +32,8 @@ export default function ChatsPage() {
             </div>
             <h3 className="text-xl font-medium mb-2">No active chats</h3>
             <p className="text-muted-foreground mb-4 text-center max-w-md">
-              You don't have any active conversations yet. Start a new chat with someone to begin messaging.
+              You don't have any active conversations yet. Start a new chat with
+              someone to begin messaging.
             </p>
             <Button asChild>
               <Link href="/new-chat">

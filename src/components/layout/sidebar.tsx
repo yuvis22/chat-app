@@ -13,13 +13,13 @@ import {
   Menu,
   X,
   Bell,
-  Home
+  Home,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { ConversationList } from "@/components/conversations/conversation-list";
+import { ThemeToggle } from "@/src/components/theme-toggle";
+import { ConversationList } from "@/src/components/conversations/conversation-list";
 
 const routes = [
   {
@@ -76,11 +76,18 @@ export const Sidebar = ({ conversations = [] }: { conversations?: any[] }) => {
         className={cn(
           "flex flex-col h-full bg-background border-r z-30 transition-all duration-300",
           collapsed ? "w-[80px]" : "w-[280px]",
-          mobileOpen ? "fixed inset-y-0 left-0" : "-left-full md:left-0 md:relative"
+          mobileOpen
+            ? "fixed inset-y-0 left-0"
+            : "-left-full md:left-0 md:relative"
         )}
       >
         <div className="px-4 py-4 flex items-center justify-between">
-          <div className={cn("flex items-center", collapsed && "justify-center w-full")}>
+          <div
+            className={cn(
+              "flex items-center",
+              collapsed && "justify-center w-full"
+            )}
+          >
             {!collapsed && (
               <Link href="/" className="text-xl font-bold">
                 ChatApp
@@ -116,7 +123,9 @@ export const Sidebar = ({ conversations = [] }: { conversations?: any[] }) => {
                 asChild
               >
                 <Link href={route.href}>
-                  <route.icon className={cn("mr-2 h-5 w-5", collapsed && "mr-0")} />
+                  <route.icon
+                    className={cn("mr-2 h-5 w-5", collapsed && "mr-0")}
+                  />
                   {!collapsed && route.label}
                 </Link>
               </Button>
@@ -138,10 +147,9 @@ export const Sidebar = ({ conversations = [] }: { conversations?: any[] }) => {
             </>
           )}
         </ScrollArea>
-        <div className={cn(
-          "p-4 flex items-center gap-4",
-          collapsed && "flex-col"
-        )}>
+        <div
+          className={cn("p-4 flex items-center gap-4", collapsed && "flex-col")}
+        >
           <UserButton afterSignOutUrl="/" />
           {!collapsed && <ThemeToggle />}
         </div>

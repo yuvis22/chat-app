@@ -5,7 +5,7 @@ import { PlusCircle, Users } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { format } from "date-fns";
+import { format } from "date-fns/format";
 
 export default function GroupsPage() {
   // Mock data for demonstration
@@ -16,10 +16,10 @@ export default function GroupsPage() {
       lastMessage: {
         sender: "Alex",
         content: "I'll push the changes tonight",
-        timestamp: new Date(Date.now() - 1000 * 60 * 30)
+        timestamp: new Date(Date.now() - 1000 * 60 * 30),
       },
       members: 5,
-      unread: 2
+      unread: 2,
     },
     {
       id: "2",
@@ -27,10 +27,10 @@ export default function GroupsPage() {
       lastMessage: {
         sender: "Jessica",
         content: "Let's schedule a call tomorrow",
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 3)
+        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 3),
       },
       members: 8,
-      unread: 0
+      unread: 0,
     },
     {
       id: "3",
@@ -38,11 +38,11 @@ export default function GroupsPage() {
       lastMessage: {
         sender: "Emma",
         content: "The designs look great! I've shared them with the client.",
-        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24)
+        timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24),
       },
       members: 4,
-      unread: 0
-    }
+      unread: 0,
+    },
   ];
 
   return (
@@ -78,7 +78,10 @@ export default function GroupsPage() {
                         <div className="flex items-start gap-4">
                           <Avatar className="h-12 w-12">
                             <AvatarFallback className="bg-primary text-primary-foreground">
-                              {group.name.split(' ').map(n => n[0]).join('')}
+                              {group.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
                             </AvatarFallback>
                           </Avatar>
                           <div>
@@ -97,10 +100,16 @@ export default function GroupsPage() {
                             </p>
                             <div className="mt-1">
                               <p className="text-sm">
-                                <span className="font-medium">{group.lastMessage.sender}:</span> {group.lastMessage.content}
+                                <span className="font-medium">
+                                  {group.lastMessage.sender}:
+                                </span>{" "}
+                                {group.lastMessage.content}
                               </p>
                               <p className="text-xs text-muted-foreground mt-1">
-                                {format(group.lastMessage.timestamp, "MMM d, h:mm a")}
+                                {format(
+                                  group.lastMessage.timestamp,
+                                  "MMM d, h:mm a"
+                                )}
                               </p>
                             </div>
                           </div>

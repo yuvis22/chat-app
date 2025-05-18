@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.6",
+    "@headlessui/react": "^2.2.3",
     "@hookform/resolvers": "^3.9.0",
     "@next/swc-wasm-nodejs": "13.5.7",
     "@radix-ui/react-accordion": "^1.2.0",
